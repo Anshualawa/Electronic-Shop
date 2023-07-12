@@ -11,14 +11,13 @@
         <div class="row justify-content-center align-items-center g-2 p-5 m-5">
             <div class="col-3"></div>
             <div class="col-6 p-5 m-5 bg-light bg-opacity-25 border rounded-4 shadow">
-                <form action="" method="post">
+                <form action="{{ route('login') }}" method="post">
                     @csrf
 
                     <div class="mb-3">
                         <label for="" class="form-label">Email</label>
                         <input type="email" class="form-control" name="email" id="email"
-                            aria-describedby="emailHelpId" placeholder="abc@mail.com">
-                        <small id="emailHelpId" class="form-text text-muted">Help text</small>
+                            value="{{ old('email') }}" aria-describedby="emailHelpId" placeholder="abc@mail.com">
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>

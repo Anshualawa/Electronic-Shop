@@ -18,9 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Mobile Phones 
+// Mobile Phones
+
 Route::get('products-mobile', [Products::class, 'Mobile'])->name('mobile');
+Route::get('register', [Products::class, 'Register_'])->name('register');
 Route::get('login', [Products::class, 'Login'])->name('login');
-Route::post('login', [Products::class, 'Login'])->name('login');
-Route::get('register', [Products::class, 'Register'])->name('register');
 Route::post('register', [Products::class, 'Register'])->name('register');
+Route::post('login', [Products::class, 'Login_'])->name('login');
+Route::get('logout', [Products::class, 'LogOut'])->name('logout');

@@ -4,9 +4,18 @@
     <title>ElectronicShop</title>
 @endpush
 
-@include('customComponent.nav-bar')
+<body style="background: url({{ asset('tv1.png') }});">
 
+    <div style="background: url({{ asset('navbar.png') }});background-repeat:no-repeat;background-size:100% 100%;">
 
-<h1>Mobile</h1>
+        @include('customComponent.nav-bar')
 
-@include('customComponent.footer')
+    </div>
+
+    <h1>Mobile</h1>
+
+    <a href="{{ route('logout') }}" class="badge bg-primary">Log-Out</a>
+    <a href="{{ url('/') }}" class="badge bg-primary">Welcome</a>
+
+    @include('customComponent.footer')
+</body>
