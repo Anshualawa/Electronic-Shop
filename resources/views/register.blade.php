@@ -19,7 +19,7 @@
                         <select class="form-select form-select-lg" name="role" id="role">
                             <option selected>Select one</option>
                             <option value="customer">Customer</option>
-                            <option value="saler">Seller</option>
+                            <option value="seller">Seller</option>
                             <option value="admin">Admin</option>
                         </select>
                     </div>

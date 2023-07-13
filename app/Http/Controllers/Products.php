@@ -60,6 +60,8 @@ class Products extends Controller
         } else {
             $request->session()->put('loger', $id->name);
             $request->session()->put('role', $id->role);
+            $request->session()->put('id', $id->id);
+            $request->session()->put('email', $id->email);
             Alert::success('Accessed');
             return redirect('/products-mobile');
         }
@@ -71,4 +73,24 @@ class Products extends Controller
         $request->session()->flush();
         return view('welcome');
     }
+
+
+
+    // Products upload function 
+    function upload_product()
+    {
+        if (session('loger')) {
+            return view('uploadproduct');
+        } else {
+            return view('login');
+        }
+    }
+
+    function upload_product_(Request $request)
+    {
+        echo '<pre>';
+        print_r($request->toArray());
+        // return view('uploadproduct');
+    }
+
 }

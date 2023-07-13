@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('electronic_shops', function (Blueprint $table) {
             $table->id();
-            $table->enum('role', ['admin', 'customer', 'saller'])->default('customer');
+            $table->enum('role', ['admin', 'customer', 'seller'])->default('customer');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');

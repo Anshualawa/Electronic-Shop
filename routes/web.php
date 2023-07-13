@@ -26,3 +26,7 @@ Route::get('login', [Products::class, 'Login'])->name('login');
 Route::post('register', [Products::class, 'Register'])->name('register');
 Route::post('login', [Products::class, 'Login_'])->name('login');
 Route::get('logout', [Products::class, 'LogOut'])->name('logout');
+
+// upload Products
+Route::get('upload-product', [Products::class, 'upload_product'])->name('prod_upload');
+Route::post('upload-product', [Products::class, 'upload_product_'])->name('prod_upload');
