@@ -31,6 +31,7 @@
             <div class="col-3"></div>
         </div>
     </div>
+    @include('customComponent.backBtn')
 
     @include('customComponent.footer')
 </body>

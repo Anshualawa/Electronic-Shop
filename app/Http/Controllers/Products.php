@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ElectronicShop;
+use App\Models\AllProduct;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,7 +16,9 @@ class Products extends Controller
     function Mobile(Request $request)
     {
         if (session('loger')) {
-            return view('Mobiles.Products');
+            $product = AllProduct::all();
+            $data = compact('product');
+            return view('Mobiles.Products')->with($data);
         } else {
             return view('login');
         }
@@ -77,10 +80,16 @@ class Products extends Controller
 
 
     // Products upload function 
-    function upload_product()
+    function upload_product(Request $request)
     {
-        if (session('loger')) {
+        if (session('loger') && session('role') == 'saler' | session('role') == 'admin') {
+            Alert::success('Accessed');
             return view('uploadproduct');
+        } elseif (session('loger')) {
+            Alert::warning('Only Admin and Seller can Add the product');
+            $product = AllProduct::all();
+            $data = compact('product');
+            return view('Mobiles.Products')->with($data);
         } else {
             return view('login');
         }
@@ -88,9 +97,30 @@ class Products extends Controller
 
     function upload_product_(Request $request)
     {
-        echo '<pre>';
-        print_r($request->toArray());
-        // return view('uploadproduct');
+        $request->validate([
+            'product_name' => 'required',
+            'brand' => 'required',
+            'category' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'availability' => 'required',
+        ]);
+
+        $product = new AllProduct;
+        $product->seller_id = session('id');
+        $product->product_name = $request->product_name;
+        $product->brand = $request->brand;
+        $product->category = $request->category;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->availability = $request->availability;
+        $product->ratings = $request->ratings;
+        $product->special_offers = $request->special_offers;
+        $product->warranty = $request->warranty;
+        $product->accessories = $request->accessories;
+        $product->save();
+        Alert::success('Product Added Success');
+        return view('uploadproduct');
     }
 
 }

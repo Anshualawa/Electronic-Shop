@@ -19,9 +19,9 @@ return new class extends Migration {
             $table->decimal('price', 10, 2);
             $table->text('description');
             $table->string('availability');
-            $table->decimal('ratings', 3, 1);
+            $table->decimal('ratings', 3, 1)->nullable();
             $table->string('special_offers')->nullable();
-            $table->string('warranty');
+            $table->string('warranty')->nullable();
             $table->string('accessories')->nullable();
             $table->timestamps();
         });

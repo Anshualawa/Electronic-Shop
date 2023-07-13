@@ -6,36 +6,39 @@
 
 
 
-<nav class="nav justify-content-center flex-row text-center bg-primary shadow p-1">
-    <div class="col-4"></div>
-    <div class="col-4 ">
-        <span class="mx-4 "><a href="{{url('/')}}" class="btn btn-primary">Home</span>
-        <span class="mx-4 "><a href="" class="btn btn-primary">Mobile</a></span>
-        <span class="mx-4 "><a href="" class="btn btn-primary">Profile</a></span>
-        <span class="mx-4 "><a href="" class="btn btn-primary">Aboutadsfds</a></span>
+@include('customComponent.nav-bar')
+
+
+
+
+<div class="container">
+    <div class="row justify-content-center align-items-center g-2">
+        @foreach ($product as $item)
+            <div class="card-group">
+                <div class="card">
+                    <img class="" src="holder.js/100x180/" alt="{{ $item->product_name }}">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ $item->product_name }}</h3>
+                        <h4 class="card-title">{{ $item->price }}</h4>
+                        <h4 class="card-title">{{ $item->special_offers }}</h4>
+                        <p class="card-title">{{ $item->brand }}</p>
+                        <p class="card-title">{{ $item->category }}</p>
+                        <p class="card-title">{{ $item->availability }}</p>
+                        <p class="card-title">{{ $item->ratings }}</p>
+                        <p class="card-title">{{ $item->warranty }}</p>
+                        <p class="card-title">{{ $item->accessories }}</p>
+
+                        <p class="card-text">{{ $item->description }}</p>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
-    <div class="col-4 text-end px-5">
-        <span>{{ session('role') }} : </span>
-        <span>{{ session('loger') }} </span>
-        <span> <a href="{{ route('logout') }}">
-                <img src="{{ asset('img/logout_mark.png') }}" width="10%" alt="logout"></a></span>
-    </div>
-
-</nav>
+</div>
 
 
-{{-- <body style="background: url({{ asset('tv1.png') }});">
 
-    <div style="background: url({{ asset('navbar.png') }});background-repeat:no-repeat;background-size:100% 100%;">
 
-        @include('customComponent.nav-bar')
 
-    </div>
-
-    <h1>Mobile</h1>
-    <span>{{ session('loger') }}</span>
-    <a href="{{ route('logout') }}" class="badge bg-primary">Log-Out</a>
-    <a href="{{ url('/') }}" class="badge bg-primary">Welcome</a> --}}
-{{-- </body> --}}
 
 @include('customComponent.footer')

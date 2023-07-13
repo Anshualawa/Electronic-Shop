@@ -91,7 +91,7 @@
                                 <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Upload Product for Selle</h2>
 
                                 <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
+                                    Introducing the latest product for sellers - an innovative all-in-one e-commerce platform. Streamline your selling process with built-in inventory management, seamless payment integration, and comprehensive analytics. Boost your sales with customizable product listings and easy-to-use marketing tools. Elevate your business and reach new heights with our powerful seller solution.
                                 </p>
                             </div>
 

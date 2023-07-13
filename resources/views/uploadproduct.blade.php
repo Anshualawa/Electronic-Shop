@@ -55,4 +55,6 @@
 </div>
 
 
+@include('customComponent.backBtn')
+
 @include('customComponent.footer')
