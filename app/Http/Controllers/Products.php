@@ -58,7 +58,8 @@ class Products extends Controller
             Alert::warning('Access Denied');
             return view('login');
         } else {
-            $request->session()->put('loger', $id->email);
+            $request->session()->put('loger', $id->name);
+            $request->session()->put('role', $id->role);
             Alert::success('Accessed');
             return redirect('/products-mobile');
         }
