@@ -23,40 +23,38 @@
             <thead>
                 <tr>
                     <th scope="col">S.N.</th>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">DOB</th>
-                    <th scope="col">Gender</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">State</th>
-                    <th scope="col">Country</th>
-                    <th scope="col">Status</th>
-                    <th class="text-center" scope="col" colspan="2">Action</th>
+                    <th scope="col">Product ID</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Special Offer</th>
+                    <th scope="col">Availability</th>
+                    <th scope="col">Rating</th>
+                    <th scope="col">Warranty</th>
+                    <th scope="col">Accessories</th>
+                    {{-- <th scope="col">Description</th> --}}
+                    {{-- <th class="text-center" scope="col" colspan="2">Action</th> --}}
                 </tr>
             </thead>
             <tbody><?php $i = 0; ?>
                 @foreach ($product as $item)
                     <tr>
                         <td>{{ $i + 1 }}</td><?php $i += 1; ?>
-                        <td scope="row">202315{{ $item->customer_id }}</td>
-                        <td>{{ $item->name }}</td>
-                        <td>{{ $item->email }}</td>
-                        <td>{{ $item->dob }}</td>
-                        <td>
-                            @if ($item->gender == 'M')
-                                Male
-                            @elseif($item->gender == 'F')
-                                Female
-                            @elseif($item->gender == 'O')
-                                Other
-                            @endif
+                        <td scope="row">202315{{ $item->product_id }}</td>
+                        <td>{{ $item->product_name }}</td>
+                        <td>{{ $item->brand }}</td>
+                        <td>{{ $item->category }}</td>
+                        <td>{{ '₹' . $item->price }} </td>
+                        <td>{{ '₹' . $item->special_offers }}</td>
+                        <td>{{ $item->availability }}</td>
+                        <td>{{ $item->ratings }}</td>
+                        <td>{{ $item->warranty }}</td>
+                        <td>{{ $item->accessories }}</td>
+                        {{-- <td>{{ $item->description }}</td> --}}
 
-                        </td>
-                        <td>{{ $item->address }}</td>
-                        <td>{{ $item->state }}</td>
-                        <td>{{ $item->country }}</td>
-                        <td>
+
+                        {{-- <td>
                             @if ($item->status == '1')
                                 <span class="badge text-success"> Active </span>
                             @else
@@ -67,7 +65,7 @@
                         <td><a href="{{ route('customer.edit', ['id' => $item->customer_id]) }}"><button
                                     class="btn btn-success">Edit</button></a></td>
                         <td><a href="{{ route('customer.delete', ['id' => $item->customer_id]) }}"><button
-                                    class="btn btn-warning">Trash</button></a></td>
+                                    class="btn btn-warning">Trash</button></a></td> --}}
                     </tr>
                 @endforeach
             </tbody>

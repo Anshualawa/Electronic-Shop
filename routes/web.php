@@ -30,3 +30,6 @@ Route::get('logout', [Products::class, 'LogOut'])->name('logout');
 // upload Products
 Route::get('upload-product', [Products::class, 'upload_product'])->name('prod_upload');
 Route::post('upload-product', [Products::class, 'upload_product_'])->name('prod_upload');
+
+// Addmin board 
+Route::get('adminboard', [Products::class, 'Dashboard'])->name('admin');

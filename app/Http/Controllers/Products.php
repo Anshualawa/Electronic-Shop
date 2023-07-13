@@ -120,7 +120,23 @@ class Products extends Controller
         $product->accessories = $request->accessories;
         $product->save();
         Alert::success('Product Added Success');
-        return view('uploadproduct');
+        // $product = AllProduct::all();
+        // $data = compact('product');
+        // return redirect('/adminboard')->with($data);
+        return redirect('/adminboard');
+    }
+
+    function Dashboard()
+    {
+        if (session('role') == 'admin') {
+            $product = AllProduct::all();
+            $data = compact('product');
+            Alert::success('Product Added Success');
+            return view('adminboard')->with($data);
+        } else {
+            Alert::success('Product Added Success');
+            return redirect('/products-mobile');
+        }
     }
 
 }
