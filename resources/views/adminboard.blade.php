@@ -23,6 +23,7 @@
             <thead>
                 <tr>
                     <th scope="col">S.N.</th>
+                    <th scope="col">Shop ID</th>
                     <th scope="col">Product ID</th>
                     <th scope="col">Product Name</th>
                     <th scope="col">Brand</th>
@@ -41,6 +42,7 @@
                 @foreach ($product as $item)
                     <tr>
                         <td>{{ $i + 1 }}</td><?php $i += 1; ?>
+                        <td>202114{{ $item->seller_id }}</td>
                         <td scope="row">202315{{ $item->product_id }}</td>
                         <td>{{ $item->product_name }}</td>
                         <td>{{ $item->brand }}</td>
