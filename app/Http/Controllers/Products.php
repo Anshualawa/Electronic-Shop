@@ -131,7 +131,6 @@ class Products extends Controller
         if (session('role') == 'admin') {
             $product = AllProduct::all();
             $data = compact('product');
-            Alert::success('Product Added Success');
             return view('adminboard')->with($data);
         } else {
             Alert::success('Product Added Success');
