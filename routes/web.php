@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Products;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,15 @@ Route::post('upload-product', [Products::class, 'upload_product_'])->name('prod_
 
 // Addmin board 
 Route::get('adminboard', [Products::class, 'Dashboard'])->name('admin');
+
+
+
+// image upload 
+Route::get('img-upload', function () {
+    return view('image'); });
+
+
+Route::post('img-upload', function (Request $request) {
+    echo '<pre>';
+    print_r($request->toArray());
+});
