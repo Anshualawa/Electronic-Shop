@@ -16,7 +16,15 @@
         @foreach ($product as $item)
             <div class="card-group">
                 <div class="card">
-                    <img class="" src="{{ asset('img/mobile.png') }}" alt="{{ $item->product_name }}">
+
+                    @if ($item->file)
+                        <img class="" src="{{ asset('img/'.$item->file) }}" width="30%"
+                            alt="{{ asset($item->product_name) }}">
+                    @else
+                        <img class="" src="{{ asset('img/thumlin.png') }}" width="30%"
+                            alt="{{ asset($item->product_name) }}">
+                    @endif
+
                     <div class="card-body">
                         <div class="row">
                             <h3 class="card-title">{{ $item->product_name }}</h3>
@@ -25,12 +33,13 @@
                                 <a name="" id="" class="btn btn-warning mx-5" href=""
                                     role="button">
                                     ADD TO CART</a>
-                                <a name="" id="" class="btn btn-warning mx-5" href=""
+                                <a name="" id="" class="btn btn-warning mx-5" href="{{route('payment')}}"
                                     role="button">
                                     BUY NOW</a>
                             </div>
                         </div>
-                        <h4 class="card-title"><span class="text-info"> Price :- </span> Rs . <s> {{ $item->price }}
+                        <h4 class="card-title"><span class="text-info"> Price :- </span> Rs . <s>
+                                {{ $item->price }}
                                 /-</s></h4>
                         <h4 class="card-title"><span class="text-info"> Specail Offers :-
                             </span>Rs. {{ $item->special_offers }} /-</h4>
@@ -47,7 +56,8 @@
                         </p>
                         <p class="card-title"><span class="text-info"> Rating :- </span> {{ $item->ratings }}</p>
                         <p class="card-title"><span class="text-info"> Warranty :- </span> {{ $item->warranty }}</p>
-                        <p class="card-title"><span class="text-info"> Accessories :- </span> {{ $item->accessories }}
+                        <p class="card-title"><span class="text-info"> Accessories :- </span>
+                            {{ $item->accessories }}
                         </p>
 
                         <p class="card-text"><span class="text-info"> Description :- </span>{{ $item->description }}

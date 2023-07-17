@@ -8,7 +8,7 @@
 
 
 
-<div class="container">
+<div class="p-2 my-5">
     <div class="row ">
         <div class="col-6  P-1">
             <h2>Product Detail</h2>
@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="shadow border table-responsive rounded">
-        <table class="table  table-hover table-secondary table-responsive">
+        <table class="table table-bordered  table-hover table-secondary table-responsive">
             <thead>
                 <tr>
                     <th scope="col">S.N.</th>
@@ -34,6 +34,7 @@
                     <th scope="col">Rating</th>
                     <th scope="col">Warranty</th>
                     <th scope="col">Accessories</th>
+                    <th scope="col">Photos</th>
                     {{-- <th scope="col">Description</th> --}}
                     {{-- <th class="text-center" scope="col" colspan="2">Action</th> --}}
                 </tr>
@@ -53,6 +54,7 @@
                         <td>{{ $item->ratings }}</td>
                         <td>{{ $item->warranty }}</td>
                         <td>{{ $item->accessories }}</td>
+                        <td><span><img src="{{ asset('img/'.$item->file) }}" width="60%" alt="{{ $item->file }}" /></span></td>
                         {{-- <td>{{ $item->description }}</td> --}}
 
 

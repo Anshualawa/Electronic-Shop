@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Products;
 use Illuminate\Http\Request;
+use App\Models\AllProduct;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,8 @@ Route::get('/', function () {
 });
 
 // Mobile Phones
+
+Route::get('go-back', [Products::class, 'backbtn'])->name('back');
 
 Route::get('products-mobile', [Products::class, 'Mobile'])->name('mobile');
 Route::get('register', [Products::class, 'Register_'])->name('register');
@@ -39,10 +42,23 @@ Route::get('adminboard', [Products::class, 'Dashboard'])->name('admin');
 
 // image upload 
 Route::get('img-upload', function () {
-    return view('image'); });
+    return view('image');
+});
 
 
 Route::post('img-upload', function (Request $request) {
     echo '<pre>';
     print_r($request->toArray());
+    exit;
+    if ($request->file('image')) {
+        $file = $request->file('image');
+        $extention = $file->getClientOriginalExtension();
+        $filename = time() . '.' . $extention;
+        $file->move('img/', $filename);
+    }
+    return redirect()->back()->with('status', 'File Upload success');
 });
+
+
+// payment method 
+Route::get('pay-method',[Products::class, 'Payment'])->name('payment');

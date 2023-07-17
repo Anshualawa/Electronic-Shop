@@ -7,7 +7,7 @@
 
 
 
-    <form method="POST" action="{{ route('prod_upload') }}">
+    <form method="POST" action="{{ route('prod_upload') }}" enctype="multipart/form-data">
         @csrf
         <!-- Laravel CSRF token -->
         <label for="sellername">Seller Name</label>
@@ -48,6 +48,8 @@
 
         <label for="accessories">Accessories:</label>
         <input type="text" id="accessories" name="accessories"><br><br>
+
+        <input type="file" name="image" id="image" aria-describedby="fileHelpId">
 
         <input type="submit" value="Add Product">
     </form>

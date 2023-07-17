@@ -23,6 +23,7 @@ return new class extends Migration {
             $table->string('special_offers')->nullable();
             $table->string('warranty')->nullable();
             $table->string('accessories')->nullable();
+            $table->string('product_image')->nullable();
             $table->timestamps();
         });
     }

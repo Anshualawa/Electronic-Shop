@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ElectronicShop;
 use App\Models\AllProduct;
+use Nette\Utils\Image;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Hash;
 
@@ -12,6 +13,10 @@ use Illuminate\Support\Facades\Hash;
 
 class Products extends Controller
 {
+    function backbtn()
+    {
+        return back();
+    }
 
     function Mobile(Request $request)
     {
@@ -40,14 +45,23 @@ class Products extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-        $data->role = $request['role'];
-        $data->name = $request['name'];
-        $data->email = $request['email'];
-        $data->password = $request['password'];
-        $data->save();
-        Alert::success('Register Success');
-        return redirect('login');
+        // check email are uniq or not
 
+        $id = ElectronicShop::where('email', $request->email)->first();
+        if ($id) {
+            Alert::warning('Already Used Email ID');
+            return redirect()->back();
+            // return view('login');
+        } else {
+
+            $data->role = $request['role'];
+            $data->name = $request['name'];
+            $data->email = $request['email'];
+            $data->password = $request['password'];
+            $data->save();
+            Alert::success('Register Success');
+            return redirect('login');
+        }
     }
     function Login(Request $request)
     {
@@ -82,8 +96,8 @@ class Products extends Controller
     // Products upload function 
     function upload_product(Request $request)
     {
-        if (session('loger') && session('role') == 'saler' | session('role') == 'admin') {
-            Alert::success('Accessed');
+        if (session('loger') && session('role') == 'saler' | session('role') == 'seller' | session('role') == 'admin') {
+            // Alert::success('Accessed');
             return view('uploadproduct');
         } elseif (session('loger')) {
             Alert::warning('Only Admin and Seller can Add the product');
@@ -118,6 +132,27 @@ class Products extends Controller
         $product->special_offers = $request->special_offers;
         $product->warranty = $request->warranty;
         $product->accessories = $request->accessories;
+
+
+
+
+
+
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extention;
+            echo '<pre>';
+            // print_r($filename);
+            $file->move('img/', $filename);
+            $product->file = $filename;
+        } else {
+            echo '<pre>';
+            print_r($request->image);
+            exit;
+        }
+
+
         $product->save();
         Alert::success('Product Added Success');
         // $product = AllProduct::all();
@@ -137,5 +172,19 @@ class Products extends Controller
             return redirect('/products-mobile');
         }
     }
+
+
+
+    function Payment(Request $request)
+    {
+        if (session('loger')) {
+            $product = AllProduct::all();
+            $data = compact('product');
+            return view('customComponent/payment')->with($data);
+        } else {
+            return redirect(route('home'));
+        }
+    }
+
 
 }
