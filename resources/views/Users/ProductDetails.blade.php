@@ -1,7 +1,7 @@
 @extends('customComponent.header')
 
 @push('title')
-    <title> All Product </title>
+    <title> {{session('loger')}} All Product </title>
 @endpush
 
 @include('customComponent.nav-bar')
@@ -23,7 +23,6 @@
             <thead>
                 <tr>
                     <th scope="col">S.N.</th>
-                    <th scope="col">Shop ID</th>
                     <th scope="col">Product ID</th>
                     <th scope="col">Product Name</th>
                     <th scope="col">Brand</th>
@@ -43,7 +42,6 @@
                 @foreach ($product as $item)
                     <tr>
                         <td>{{ $i + 1 }}</td><?php $i += 1; ?>
-                        <td>202114{{ $item->seller_id }}</td>
                         <td scope="row">202315{{ $item->product_id }}</td>
                         <td>{{ $item->product_name }}</td>
                         <td>{{ $item->brand }}</td>
@@ -81,36 +79,7 @@
 
 <div class="p-2 my-5">
     <div class="row">
-        <div class="col-6">
-            <h2>Saller's</h2>
-            <div class="shadow border table-responsive rounded">
-                <table class="table table-bordered  table-hover table-secondary table-responsive">
-                    <thead>
-                        <tr>
-                            <th scope="col">S.N.</th>
-                            <th scope="col">Shop ID</th>
-                            <th scope="col">Contact</th>
-                            <th scope="col">Owner Name</th>
-                            <th scope="col">Password</th>
-                        </tr>
-                    </thead>
-                    <tbody><?php $i = 0; ?>
-                        @foreach ($user as $item)
-                            @if ($item->role == 'seller')
-                                <tr>
-                                    <td>{{ $i + 1 }}</td><?php $i += 1; ?>
-                                    <td>202114{{ $item->id }}</td>
-                                    <td scope="row">{{ $item->email }}</td>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->password }}</td>
-                                </tr>
-                            @endif
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="col-6">
+        <div class="">
             <h2>Customer's</h2>
             <div class="shadow border table-responsive rounded">
                 <table class="table table-bordered  table-hover table-secondary table-responsive">

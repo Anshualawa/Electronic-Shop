@@ -24,7 +24,12 @@ Route::get('/', function () {
 
 Route::get('go-back', [Products::class, 'backbtn'])->name('back');
 
+Route::get('products', [Products::class, 'home'])->name('home');
+
 Route::get('products-mobile', [Products::class, 'Mobile'])->name('mobile');
+Route::get('products-laptop', [Products::class, 'laptop'])->name('laptop');
+Route::get('products-tvs', [Products::class, 'tvs'])->name('tvs');
+Route::get('products-accessories', [Products::class, 'accessories'])->name('accessories');
 Route::get('register', [Products::class, 'Register_'])->name('register');
 Route::get('login', [Products::class, 'Login'])->name('login');
 Route::post('register', [Products::class, 'Register'])->name('register');
@@ -61,4 +66,7 @@ Route::post('img-upload', function (Request $request) {
 
 
 // payment method 
-Route::get('pay-method',[Products::class, 'Payment'])->name('payment');
+Route::get('pay-method{id}', [Products::class, 'Payment'])->name('payment');
+
+// Seller Products details
+Route::get('my-all-product-Details{id}', [Products::class, 'productDetail'])->name('productDetail');

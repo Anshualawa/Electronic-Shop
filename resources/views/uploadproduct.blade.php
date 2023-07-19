@@ -23,7 +23,17 @@
         <input type="text" id="brand" name="brand" required><br><br>
 
         <label for="category">Category:</label>
-        <input type="text" id="category" name="category" required><br><br>
+
+        <select  name="category" id="category">
+            <option selected>Select one</option>
+            <option value="laptop">Laptop</option>
+            <option value="Smart Phone">Smart Phone</option>
+            <option value="TVs">TV Application</option>
+            <option value="accessories">Accessories</option>
+        </select>
+
+
+        <br><br>
 
         <label for="price">Price:</label>
         <input type="number" id="price" name="price" step="0.01" required><br><br>
@@ -41,7 +51,7 @@
         <input type="number" id="ratings" name="ratings" step="0.1" required><br><br>
 
         <label for="special_offers">Special Offers:</label>
-        <input type="text" id="special_offers" name="special_offers"><br><br>
+        <input type="number" id="special_offers" name="special_offers"><br><br>
 
         <label for="warranty">Warranty:</label>
         <input type="text" id="warranty" name="warranty" required><br><br>

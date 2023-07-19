@@ -1,7 +1,7 @@
 @extends('customComponent.header')
 
 @push('title')
-    <title>Smart Phones</title>
+    <title>All Electronic Accessories</title>
 @endpush
 
 
@@ -13,7 +13,7 @@
 
 <div class="container p-5">
     @foreach ($product as $item)
-        @if (strrchr($item->category, 'Phone'))
+        @if (strrchr($item->category, 'accessories'))
             <div class="row justify-content-center align-items-center g-2 my-5 p-2 bg-light shadow  rounded-4">
 
 

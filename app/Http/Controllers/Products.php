@@ -17,19 +17,57 @@ class Products extends Controller
     {
         return back();
     }
-
-    function Mobile(Request $request)
+    function home()
     {
         if (session('loger')) {
             $product = AllProduct::all();
+            $data = compact('product');
+            return view('home')->with($data);
+        } else {
+            return view('login');
+        }
+    }
+    function Mobile(Request $request)
+    {
+        if (session('loger')) {
+            $product = AllProduct::where('category','Smart Phone')->get();
             $data = compact('product');
             return view('Mobiles.Products')->with($data);
         } else {
             return view('login');
         }
     }
+    function laptop()
+    {
+        if (session('loger')) {
+            $product = AllProduct::where('category', 'laptop')->get();
+            $data = compact('product');
+            return view('Catogories.laptop')->with($data);
+        } else {
+            return view('login');
+        }
+    }
+    function TVs()
+    {
+        if (session('loger')) {
+            $product = AllProduct::where('category', 'TVs')->get();
+            $data = compact('product');
+            return view('Catogories.TVs')->with($data);
+        } else {
+            return view('login');
+        }
+    }
 
-
+    function accessories()
+    {
+        if (session('loger')) {
+            $product = AllProduct::where('category', 'accessories')->get();
+            $data = compact('product');
+            return view('Catogories.accessories')->with($data);
+        } else {
+            return view('login');
+        }
+    }
 
     function Register_(Request $request)
     {
@@ -96,7 +134,7 @@ class Products extends Controller
     // Products upload function 
     function upload_product(Request $request)
     {
-        if (session('loger') && session('role') == 'saler' | session('role') == 'seller' | session('role') == 'admin') {
+        if (session('loger') && session('role') == 'saler' | session('role') == 'seller') {
             // Alert::success('Accessed');
             return view('uploadproduct');
         } elseif (session('loger')) {
@@ -144,7 +182,7 @@ class Products extends Controller
             $filename = time() . '.' . $extention;
             echo '<pre>';
             // print_r($filename);
-            $file->move('img/', $filename);
+            $file->move('img/Product/', $filename);
             $product->file = $filename;
         } else {
             echo '<pre>';
@@ -165,7 +203,8 @@ class Products extends Controller
     {
         if (session('role') == 'admin') {
             $product = AllProduct::all();
-            $data = compact('product');
+            $user = ElectronicShop::all();
+            $data = compact('product', 'user');
             return view('adminboard')->with($data);
         } else {
             Alert::success('Product Added Success');
@@ -174,11 +213,25 @@ class Products extends Controller
     }
 
 
-
-    function Payment(Request $request)
+    function productDetail($id)
     {
         if (session('loger')) {
-            $product = AllProduct::all();
+            $product = AllProduct::where('seller_id', $id)->get();
+            $user = ElectronicShop::all();
+            $data = compact('product', 'user');
+            
+            return view('Users.ProductDetails')->with($data);
+        } else {
+            Alert::success('Product Added Success');
+            return redirect(route('home'));
+        }
+    }
+
+
+    function Payment($id)
+    {
+        if (session('loger')) {
+            $product = AllProduct::find($id);
             $data = compact('product');
             return view('customComponent/payment')->with($data);
         } else {
