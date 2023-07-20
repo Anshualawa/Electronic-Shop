@@ -5,12 +5,12 @@
 @endpush
 
 
-<body style="background: url({{ asset('screen1.png') }});background-repeat:no-repeat;background-size:100% 100%;">
+<body style="background: url({{ asset('TV3.png') }});background-repeat:no-repeat;background-size:100% 100%;">
 
-    <div class="container p-5 m-5">
+    <div class="container p-5 m-5 " >
         <div class="row justify-content-center align-items-center g-2 p-5 ">
             <div class="col-3"></div>
-            <div class="col-6 p-5 m-5 bg-light bg-opacity-25 border rounded-4 shadow">
+            <div class="col-6 p-5 m-5 bg-light bg-opacity-50 border rounded-4 shadow">
 
                 <form action="{{ route('register') }}" method="post">
                     @csrf

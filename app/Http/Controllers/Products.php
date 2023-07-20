@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ElectronicShop;
 use App\Models\AllProduct;
+use App\Models\Customers;
 use Nette\Utils\Image;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Hash;
@@ -30,7 +31,7 @@ class Products extends Controller
     function Mobile(Request $request)
     {
         if (session('loger')) {
-            $product = AllProduct::where('category','Smart Phone')->get();
+            $product = AllProduct::where('category', 'Smart Phone')->get();
             $data = compact('product');
             return view('Mobiles.Products')->with($data);
         } else {
@@ -101,6 +102,73 @@ class Products extends Controller
             return redirect('login');
         }
     }
+
+    // Customer Registration 
+
+    function customer_register()
+    {
+        return view('customerRegister');
+    }
+    function customer_registerr(Request $request)
+    {
+        // echo '<pre>';
+        // print_r($request->toArray());
+        // exit;
+        $data = new Customers;
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+        // check email are uniq or not
+
+        $id = Customers::where('email', $request->email)->first();
+        if ($id) {
+            Alert::warning('Already Used Email ID');
+            return redirect()->back();
+            // return view('login');
+        } else {
+
+            $data->customer_name = $request['name'];
+            $data->gender = $request['gender'];
+            $data->email = $request['email'];
+            $data->phone = $request['phone'];
+            $data->address = $request['address'];
+            $data->date_of_birth = $request['birthday'];
+            $data->password = $request['password'];
+            $data->save();
+            Alert::success('Register Success');
+            return redirect('customer-login');
+        }
+    }
+
+
+
+    // customer_login
+
+    function customer_login(Request $request)
+    {
+        return view('customer-login');
+    }
+    function customer_login_(Request $request)
+    {
+
+        $id = Customers::where('email', $request->email)->first();
+        if (!$id || !($request->password == $id->password)) {
+            Alert::warning('Access Denied');
+            return view('customer-login');
+        } else {
+            $request->session()->put('loger', $id->customer_name);
+            $request->session()->put('role', 'customer');
+            $request->session()->put('id', $id->id);
+            $request->session()->put('email', $id->email);
+            Alert::success('Accessed');
+            return redirect('/products');
+        }
+
+    }
+
+    // admin and seller login
     function Login(Request $request)
     {
         return view('login');
@@ -196,7 +264,7 @@ class Products extends Controller
         // $product = AllProduct::all();
         // $data = compact('product');
         // return redirect('/adminboard')->with($data);
-        return redirect('/adminboard');
+        return redirect('/products');
     }
 
     function Dashboard()
@@ -204,7 +272,8 @@ class Products extends Controller
         if (session('role') == 'admin') {
             $product = AllProduct::all();
             $user = ElectronicShop::all();
-            $data = compact('product', 'user');
+            $customer = Customers::all();
+            $data = compact('product', 'user','customer');
             return view('adminboard')->with($data);
         } else {
             Alert::success('Product Added Success');
@@ -217,9 +286,9 @@ class Products extends Controller
     {
         if (session('loger')) {
             $product = AllProduct::where('seller_id', $id)->get();
-            $user = ElectronicShop::all();
+            $user = Customers::all();
             $data = compact('product', 'user');
-            
+
             return view('Users.ProductDetails')->with($data);
         } else {
             Alert::success('Product Added Success');

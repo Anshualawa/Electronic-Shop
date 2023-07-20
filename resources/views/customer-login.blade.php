@@ -1,7 +1,7 @@
 @extends('customComponent.header')
 
 @push('title')
-    <title>SignIn</title>
+    <title>Customer SignIn</title>
 @endpush
 
 <body style="background: url({{ asset('screen2.png') }});background-repeat:no-repeat;background-size:100% 100%;">
@@ -11,7 +11,7 @@
         <div class="row justify-content-center align-items-center g-2 p-5 m-5">
             <div class="col-3"></div>
             <div class="col-6 p-5 m-5 bg-light bg-opacity-25 border rounded-4 shadow">
-                <form action="{{ route('login') }}" method="post">
+                <form action="{{ route('customer-login') }}" method="post">
                     @csrf
 
                     <div class="mb-3">
@@ -25,7 +25,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Login</button>
                     <small id="emailHelpId" class="form-text text-muted">If you don't have account,<a
-                            href="{{ route('register') }}">SignUp</a></small>
+                            href="{{ route('customer') }}">SignUp</a></small>
                 </form>
             </div>
             <div class="col-3"></div>

@@ -33,6 +33,10 @@ Route::get('products-accessories', [Products::class, 'accessories'])->name('acce
 Route::get('register', [Products::class, 'Register_'])->name('register');
 Route::get('login', [Products::class, 'Login'])->name('login');
 Route::post('register', [Products::class, 'Register'])->name('register');
+Route::get('customer-register', [Products::class, 'customer_register'])->name('customer');
+Route::post('customer-register', [Products::class, 'customer_registerr'])->name('customer');
+Route::get('customer-login', [Products::class, 'customer_login'])->name('customer-login');
+Route::post('customer-login', [Products::class, 'customer_login_'])->name('customer-login');
 Route::post('login', [Products::class, 'Login_'])->name('login');
 Route::get('logout', [Products::class, 'LogOut'])->name('logout');
 

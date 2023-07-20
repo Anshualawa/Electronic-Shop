@@ -1,7 +1,7 @@
 @extends('customComponent.header')
 
 @push('title')
-    <title> All Product </title>
+    <title> Admin Panel </title>
 @endpush
 
 @include('customComponent.nav-bar')
@@ -117,18 +117,24 @@
                     <thead>
                         <tr>
                             <th scope="col">S.N.</th>
-                            <th scope="col">Shop ID</th>
                             <th scope="col">Customer ID</th>
-                            <th scope="col">Product Name</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Contact</th>
+                            <th scope="col">DOB</th>
+                            <th scope="col">Address</th>
                         </tr>
                     </thead>
                     <tbody><?php $i = 0; ?>
-                        @foreach ($product as $item)
+                        @foreach ($customer as $item)
                             <tr>
                                 <td>{{ $i + 1 }}</td><?php $i += 1; ?>
-                                <td>202114{{ $item->seller_id }}</td>
-                                <td scope="row">202315{{ $item->product_id }}</td>
-                                <td>{{ $item->product_name }}</td>
+                                <td>202114{{ $item->customer_id }}</td>
+                                <td scope="row">{{ $item->customer_name }}</td>
+                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->phone }}</td>
+                                <td>{{ $item->date_of_birth }}</td>
+                                <td>{{ $item->address }}</td>
 
                             </tr>
                         @endforeach
