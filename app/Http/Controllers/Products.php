@@ -162,10 +162,23 @@ class Products extends Controller
             $request->session()->put('role', 'customer');
             $request->session()->put('id', $id->id);
             $request->session()->put('email', $id->email);
+            $request->session()->put('cart', 0);
+            // global $cart;
+            // $cart = session('cart');
             Alert::success('Accessed');
             return redirect('/products');
         }
 
+    }
+
+
+
+
+    // cart add for customer 
+    function add_cart(Request $request)
+    {
+        $request->session()->put('cart', +1);
+        return redirect()->back();
     }
 
     // admin and seller login
@@ -194,7 +207,7 @@ class Products extends Controller
     {
         Alert::success('Log-Out');
         $request->session()->flush();
-        return view('welcome');
+        return redirect('/');
     }
 
 
@@ -273,7 +286,7 @@ class Products extends Controller
             $product = AllProduct::all();
             $user = ElectronicShop::all();
             $customer = Customers::all();
-            $data = compact('product', 'user','customer');
+            $data = compact('product', 'user', 'customer');
             return view('adminboard')->with($data);
         } else {
             Alert::success('Product Added Success');

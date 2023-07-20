@@ -89,6 +89,7 @@
                         <tr>
                             <th scope="col">S.N.</th>
                             <th scope="col">Shop ID</th>
+                            {{-- <th scope="col">Product QTY</th> --}}
                             <th scope="col">Contact</th>
                             <th scope="col">Owner Name</th>
                             <th scope="col">Password</th>
@@ -100,6 +101,7 @@
                                 <tr>
                                     <td>{{ $i + 1 }}</td><?php $i += 1; ?>
                                     <td>202114{{ $item->id }}</td>
+                                    {{-- <td>{{ $item->id }}</td> --}}
                                     <td scope="row">{{ $item->email }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->password }}</td>

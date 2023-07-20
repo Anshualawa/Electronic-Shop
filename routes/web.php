@@ -44,6 +44,11 @@ Route::get('logout', [Products::class, 'LogOut'])->name('logout');
 Route::get('upload-product', [Products::class, 'upload_product'])->name('prod_upload');
 Route::post('upload-product', [Products::class, 'upload_product_'])->name('prod_upload');
 
+//customer add cart 
+Route::get('upload-product', [Products::class, 'add_cart'])->name('add-cart');
+
+
+
 // Addmin board 
 Route::get('adminboard', [Products::class, 'Dashboard'])->name('admin');
 

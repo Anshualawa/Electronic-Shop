@@ -21,7 +21,7 @@
             @break
 
             @default
-                <span class="mx-4 "><a href="#" class="btn btn-primary">Cart</a></span>
+                <span class="mx-4 "><a href="#" class="btn btn-primary">Cart<span class=" badge  bg-danger"> {{session('cart')}}</span></a></span>
                 <span class="mx-4 "><a href="#" class="btn btn-primary">About</a></span>
         @endswitch
 

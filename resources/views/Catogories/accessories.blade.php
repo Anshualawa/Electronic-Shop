@@ -86,7 +86,7 @@
 
 
                         <div class="  text-center">
-                            <a name="" id="" class="btn btn-info mx-5" href="" role="button">
+                            <a name="" id="" class="btn btn-info mx-5" href="{{route('add-cart')}}" role="button">
                                 ADD TO CART</a>
 
                             <a name="" id="" class="btn btn-info mx-5"

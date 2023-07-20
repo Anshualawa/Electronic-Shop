@@ -1,0 +1,98 @@
+{
+    "madhya pradesh": [
+        {
+            "Bhopal": [
+                {
+                    "Bhopal": [],
+                    "Raisen": [],
+                    "Rajgarh": [],
+                    "Sehore": [],
+                    "Vidisha": []
+                }
+            ],
+            "Chambal": [
+                {
+                    "Morena": [],
+                    "Sheopur": [],
+                    "Bhind": []
+                }
+            ],
+            "Gwalior": [
+                {
+                    "Gwalior": [],
+                    "Ashoknagar": [],
+                    "Shivpuri": [],
+                    "Datia": [],
+                    "Guna": []
+                }
+            ],
+            "Indore": [
+                {
+                    "Alirajpur": [],
+                    "Barwani": [],
+                    "Burhanpur": [],
+                    "Indore": [],
+                    "Dhar": [],
+                    "Jhabua": [],
+                    "Khandwa": [],
+                    "Khargone": []
+                }
+            ],
+            "Jabalpur": [
+                {
+                    "Balaghat": [],
+                    "Chhindwara": [],
+                    "Jabalpur": [],
+                    "Katni": [],
+                    "Mandla": [],
+                    "Narsinghpur": [],
+                    "Seoni": [],
+                    "Dindori": []
+                }
+            ],
+            "Narmadapuram": [
+                {
+                    "Betul": [],
+                    "Harda": [],
+                    "Narmadapuram": []
+                }
+            ],
+            "Rewa": [
+                {
+                    "Rewa": [],
+                    "Satna": [],
+                    "Sidhi": [],
+                    "Singrauli": []
+                }
+            ],
+            "Sagar": [
+                {
+                    "Chhatarpur": [],
+                    "Damoh": [],
+                    "Panna": [],
+                    "Sagar": [],
+                    "Tikamgarh": [],
+                    "Niwari": []
+                }
+            ],
+            "Shahdol": [
+                {
+                    "Anuppur": [],
+                    "Shahdol": [],
+                    "Umaria": []
+                }
+            ],
+            "Ujjain": [
+                {
+                    "Agar Malwa": [],
+                    "Dewas": [],
+                    "Mandsaur": [],
+                    "Neemuch": [],
+                    "Ratlam": [],
+                    "Shajapur": [],
+                    "Ujjain": []
+                }
+            ]
+        }
+    ]
+}
